@@ -103,7 +103,6 @@ func printProgressBar(count int, w *bufio.Writer) {
 	progress := float64(count) / float64(totalCombinations)
 	filled := int(progress * float64(barWidth))
 	fmt.Fprintf(w, "\rProgress: [%s%s] %.2f%%", strings.Repeat("=", filled), strings.Repeat(" ", barWidth-filled), progress*100)
-	// Forcer l'affichage immédiat
 	w.Flush()
 }
 
@@ -129,7 +128,6 @@ func enumerateStrings(db *sql.DB, repoURL string) {
 		lastValue = "aaaaa"
 	}
 
-	// Créer un buffer pour la sortie
 	writer := bufio.NewWriter(os.Stdout)
 
 	for {
@@ -195,7 +193,6 @@ func main() {
 	if choice == "e" {
 		enumerateStrings(db, repoURL)
 	} else {
-		// Créer un buffer pour la sortie
 		writer := bufio.NewWriter(os.Stdout)
 
 		for {
